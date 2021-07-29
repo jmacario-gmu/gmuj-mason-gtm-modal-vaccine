@@ -87,41 +87,56 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
+
 
 <script>
 
-	$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>Please Register Your COVID-19 Vaccine</strong></p></div><p>It just takes a few minutes.</p><div class="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/">Employees</a></p><p><a id="gmuj_success_button" href="#">I did it already!</a></p></div><img id="gmuj_success_image" src="http://pa1.narvii.com/6508/1e6ba33dc0f7b5b2f0bb1d1ac44352a1bff20c96_00.gif" /></div></div>');
 
-	$(document).ready(function(){
+	if (Cookies.get('gmuj_vaccine_cookie')!='1') {
 
-		// Get the modal
-		var gmuj_working_modal = document.getElementById("gmuj_modal_overlay-vaccine");
+		$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>Please Register Your COVID-19 Vaccine</strong></p></div><p>It just takes a few minutes.</p><div class="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/">Employees</a></p><p><a id="gmuj_success_button" href="#">I did it already!</a></p></div><img id="gmuj_success_image" src="http://pa1.narvii.com/6508/1e6ba33dc0f7b5b2f0bb1d1ac44352a1bff20c96_00.gif" /></div></div>');
 
-		// Get the element that closes the modal
-		var gmuj_working_modal_close = document.getElementsByClassName("gmuj_modal_close")[0];
+		$(document).ready(function(){
 
-		// Get the success button
-		var gmuj_success_button = document.getElementById("gmuj_success_button");
+			// Get the modal
+			var gmuj_working_modal = document.getElementById("gmuj_modal_overlay-vaccine");
 
-		// Get the success image
-		var gmuj_success_image = document.getElementById("gmuj_success_image");
+			// Get the element that closes the modal
+			var gmuj_working_modal_close = document.getElementsByClassName("gmuj_modal_close")[0];
 
-		// When the user clicks on the close button, close the modal
-		gmuj_working_modal_close.onclick = function() {
-		  gmuj_working_modal.style.display = "none";
-		}
+			// Get the success button
+			var gmuj_success_button = document.getElementById("gmuj_success_button");
 
-		// When the user clicks on the success button, show the success image
-		gmuj_success_button.onclick = function() {
-		  gmuj_success_image.style.display = "block";
-		}
+			// Get the success image
+			var gmuj_success_image = document.getElementById("gmuj_success_image");
 
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-		  if (event.target == gmuj_working_modal) {
-		    gmuj_working_modal.style.display = "none";
-		  }
-		} 
+			// When the user clicks on the close button...
+			gmuj_working_modal_close.onclick = function() {
+				// close the modal
+				gmuj_working_modal.style.display = "none";
+				// set a cookie
+				Cookies.set('gmuj_vaccine_cookie', '1');
+			}
 
-	})
+			// When the user clicks on the success button...
+			gmuj_success_button.onclick = function() {
+				//show the success image
+				gmuj_success_image.style.display = "block";
+				// set a cookie
+				Cookies.set('gmuj_vaccine_cookie', '1');
+			}
+
+			// When the user clicks anywhere outside of the modal...
+			window.onclick = function(event) {
+				if (event.target == gmuj_working_modal) {
+					// close it
+					gmuj_working_modal.style.display = "none";
+				}
+			}
+
+		})
+
+	}
+
 </script>
