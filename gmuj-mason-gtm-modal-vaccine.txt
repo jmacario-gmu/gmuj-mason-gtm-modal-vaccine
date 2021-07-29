@@ -1,0 +1,127 @@
+<!--Adapted from: https://www.w3schools.com/howto/howto_css_modals.asp-->
+
+<style type="text/css">
+
+	/* The Modal (background) */
+	.gmuj_modal_overlay {
+	  display: block; /* Shown by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 9999; /* Sit on top */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: auto; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content/Box */
+	.gmuj_modal_box {
+	  background-color: #fefefe;
+	  margin: 15% auto; /* 15% from the top and centered */
+	  padding: 20px;
+	  border: 1px solid #888;
+	  width: 40%;
+	  border-radius:10px;
+	}
+
+	/* The Close Button */
+	.gmuj_modal_close {
+	  color: #aaa;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+
+	.gmuj_modal_close:hover,
+	.gmuj_modal_close:focus {
+	  color: black;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+
+	/* Modal box header */
+	.gmuj_modal_box_header {
+		border-bottom:2px solid #fc3;
+		margin-top:1em;
+		margin-bottom:1.5em;
+		text-align:center;
+		text-transform:uppercase;
+	}
+
+	/* Modal Box paragraphs */
+	.gmuj_modal_box p {
+	  text-align:center;
+	  margin-bottom:1.5em;
+	}
+
+	/* Modal box buttons */
+	.gmuj_modal_box_buttons p {
+		border-radius:10px;
+		background-color:#063;
+		width:20em;
+		text-align:center;
+		padding:0.5em;
+		margin-left:auto;
+		margin-right:auto;
+		text-transform:uppercase;
+	}
+
+	/* Modal box button links */
+	.gmuj_modal_box_buttons p a {
+		display:block;
+		color: white;
+    	text-decoration: none;
+	}
+
+	/* Success image */
+	#gmuj_success_image {
+		display:none;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+	$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>Please Register Your COVID-19 Vaccine</strong></p></div><p>It just takes a few minutes.</p><div class="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/">Employees</a></p><p><a id="gmuj_success_button" href="#">I did it already!</a></p></div><img id="gmuj_success_image" src="http://pa1.narvii.com/6508/1e6ba33dc0f7b5b2f0bb1d1ac44352a1bff20c96_00.gif" /></div></div>');
+
+	$(document).ready(function(){
+
+		// Get the modal
+		var gmuj_working_modal = document.getElementById("gmuj_modal_overlay-vaccine");
+
+		// Get the element that closes the modal
+		var gmuj_working_modal_close = document.getElementsByClassName("gmuj_modal_close")[0];
+
+		// Get the success button
+		var gmuj_success_button = document.getElementById("gmuj_success_button");
+
+		// Get the success image
+		var gmuj_success_image = document.getElementById("gmuj_success_image");
+
+		// When the user clicks on the close button, close the modal
+		gmuj_working_modal_close.onclick = function() {
+		  gmuj_working_modal.style.display = "none";
+		}
+
+		// When the user clicks on the success button, show the success image
+		gmuj_success_button.onclick = function() {
+		  gmuj_success_image.style.display = "block";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == gmuj_working_modal) {
+		    gmuj_working_modal.style.display = "none";
+		  }
+		} 
+
+	})
+</script>
