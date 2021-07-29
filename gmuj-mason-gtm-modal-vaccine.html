@@ -57,7 +57,7 @@
 	}
 
 	/* Modal box buttons */
-	.gmuj_modal_box_buttons p {
+	#gmuj_modal_box_buttons p {
 		border-radius:10px;
 		background-color:#063;
 		width:15em;
@@ -69,7 +69,7 @@
 	}
 
 	/* Modal box button links */
-	.gmuj_modal_box_buttons p a {
+	#gmuj_modal_box_buttons p a {
 		display:block;
 		color: white;
     	text-decoration: none;
@@ -99,7 +99,7 @@
 
 	if (Cookies.get('gmuj_vaccine_cookie')!='1') {
 
-		$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>Please upload your COVID documentation</strong></p></div><p>It just takes a few minutes.</p><div class="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/?mason_source=vaccine_modal">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/?mason_source=vaccine_modal">Employees</a></p><p><a id="gmuj_success_button" href="#">Already did it!</a></p></div><p class="gmuj_modal_small"><a href="https://www2.gmu.edu/safe-return-campus/vaccination-policy/?mason_source=vaccine_modal">Mason\'s vaccination policy</a></p><img id="gmuj_success_image" src="https://media.giphy.com/media/qbz9Bo7KkkYspUO05t/giphy.gif" /></div></div>');
+		$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>Please upload your COVID documentation</strong></p></div><p id="gmuj_modal_box_message">It just takes a few minutes.</p><div id="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/?mason_source=vaccine_modal">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/?mason_source=vaccine_modal">Employees</a></p><p><a id="gmuj_success_button" href="#">Already did it!</a></p></div><p id="gmuj_modal_vaccine_requirements" class="gmuj_modal_small"><a href="https://www2.gmu.edu/safe-return-campus/vaccination-policy/?mason_source=vaccine_modal">Mason\'s vaccination policy</a></p><img id="gmuj_success_image" src="https://media.giphy.com/media/qbz9Bo7KkkYspUO05t/giphy.gif" /></div></div>');
 
 		$(document).ready(function(){
 
@@ -125,6 +125,13 @@
 
 			// When the user clicks on the success button...
 			gmuj_success_button.onclick = function() {
+				//Update the message
+				document.getElementById("gmuj_modal_box_message").innerHTML = "Thank you!";
+				document.getElementById("gmuj_modal_box_message").style.fontWeight = 'bold';
+				//hide the buttons
+				document.getElementById("gmuj_modal_box_buttons").style.display = "none";
+				//hide the requirements link
+				document.getElementById("gmuj_modal_vaccine_requirements").style.display="none";
 				//show the success image
 				gmuj_success_image.style.display = "block";
 				// set a cookie
