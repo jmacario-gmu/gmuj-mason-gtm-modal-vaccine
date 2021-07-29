@@ -75,6 +75,11 @@
     	text-decoration: none;
 	}
 
+	/* Small text */
+	.gmuj_modal_small {
+		font-size: 0.9em;
+	}
+
 	/* Success image */
 	#gmuj_success_image {
 		display:none;
@@ -95,7 +100,7 @@
 
 	if (Cookies.get('gmuj_vaccine_cookie')!='1') {
 
-		$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>If you have not already done so, please upload you COVID documentation</strong></p></div><p>It just takes a few minutes.</p><div class="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/">Employees</a></p><p><a id="gmuj_success_button" href="#">Already did it!</a></p></div><img id="gmuj_success_image" src="https://media.giphy.com/media/qbz9Bo7KkkYspUO05t/giphy.gif" /></div></div>');
+		$('body').prepend('<div id="gmuj_modal_overlay-vaccine" class="gmuj_modal_overlay"><div class="gmuj_modal_box"><span class="gmuj_modal_close">&times;</span><div class="gmuj_modal_box_header"><p><strong>Please upload your COVID documentation</strong></p></div><p>It just takes a few minutes.</p><div class="gmuj_modal_box_buttons"><p><a href="https://shs.gmu.edu/immunizations/covidvaccinerequirement/">Students</a></p><p><a href="https://seerm.gmu.edu/gmu-covid-19-vaccine-clinics/vaccine-requirement/">Employees</a></p><p><a id="gmuj_success_button" href="#">Already did it!</a></p></div><p class="gmuj_modal_small"><a href="https://www2.gmu.edu/safe-return-campus/vaccination-policy">Mason\'s vaccination policy</a></p><img id="gmuj_success_image" src="https://media.giphy.com/media/qbz9Bo7KkkYspUO05t/giphy.gif" /></div></div>');
 
 		$(document).ready(function(){
 
