@@ -126,7 +126,7 @@
 				// close the modal
 				gmuj_working_modal.style.display = "none";
 				// set a cookie
-				Cookies.set('gmuj_vaccine_cookie', '1');
+				Cookies.set('gmuj_vaccine_cookie', '1', { expires: 730 });
 			}
 
 			// When the user clicks on the success button...
@@ -141,7 +141,7 @@
 				//show the success image
 				gmuj_success_image.style.display = "block";
 				// set a cookie
-				Cookies.set('gmuj_vaccine_cookie', '1');
+				Cookies.set('gmuj_vaccine_cookie', '1', { expires: 730 });
 			}
 
 			// When the user clicks anywhere outside of the modal...
